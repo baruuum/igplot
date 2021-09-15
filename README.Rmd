@@ -38,7 +38,7 @@ g = erdos.renyi.game(10, .3)
 # make the same plot twice
 set.seed(42)
 tictoc::tic()
-pdf("plot1.pdf", width = 6, height = 5)
+pdf("images/plot1.pdf", width = 6, height = 5)
 plot(g, layout = layout_with_fr)
 dev.off()
 tictoc::toc()
@@ -48,16 +48,16 @@ igplot(
     g, 
     layout = "layout_with_fr", 
     bg = "white", 
-    outfile = "plot2.pdf",
+    outfile = "images/plot2.pdf",
     width = 6,
     height = 5,
     return_dat = FALSE
 )
 tictoc::toc()
 ```
-```{r}
-knitr::include_graphics("plot1.pdf")
-```
+
+![](images/plot1.pdf)
+
 
 
 `igplot` should be faster than `plot.igraph` especially for larger graphs:
@@ -65,7 +65,7 @@ knitr::include_graphics("plot1.pdf")
 ```{r fig.show = "hide", cache = TRUE}
 g = erdos.renyi.game(5000, .05)
 tictoc::tic()
-pdf("plot1_large.pdf", width = 6, height = 5)
+pdf("images/plot1_large.pdf", width = 6, height = 5)
 plot(g, layout = layout_with_fr)
 dev.off()
 tictoc::toc()
@@ -75,7 +75,7 @@ igplot(
     g, 
     layout = "layout_with_fr", 
     bg = "white", 
-    outfile = "plot2_large.pdf",
+    outfile = "images/plot2_large.pdf",
     width = 6,
     height = 5,
     return_dat = FALSE

@@ -73,12 +73,12 @@ igplot = function(
             if(NCOL(g) != 2)
                 stop("g must be either an igraph object or matrix/data.table of two columns")
             
-            g = graph_from_edgelist(g, directed = directed)
+            g = igraph::graph_from_edgelist(g, directed = directed)
             
         }
     
         # number of vertices
-        nV = vcount(g)
+        nV = igraph::vcount(g)
     
         # check layout 
         if (class(layout) == "character") {
@@ -95,10 +95,10 @@ igplot = function(
         }
         
         # get vertices
-        v_names = vertex_attr(g, "name")
+        v_names = igraph::vertex_attr(g, "name")
         if (length(v_names) == 0) {
             
-            vertex_attr(g, "name") = seq_len(nV)
+            igraph::vertex_attr(g, "name") = seq_len(nV)
             v_names = seq_len(nV)
             
         }
@@ -111,9 +111,7 @@ igplot = function(
         )
         
         # get edges
-        e = data.table(
-            as_edgelist(g, names = TRUE)
-        )
+        e = data.table(igraph::as_edgelist(g, names = TRUE))
         setnames(e, c("name1", "name2"))
         
         e = merge_layout(v, e)
@@ -124,7 +122,7 @@ igplot = function(
             
             if (is.null(layout)) {
             
-                net = graph_from_data_frame(
+                net = igraph::graph_from_data_frame(
                     g$edges[, c("name1", "name2")], 
                     directed = directed,
                     vertices = g$vertices[, c("name")]

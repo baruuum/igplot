@@ -25,47 +25,36 @@ You can install `igplot` with:
 remotes::install_github("baruuum/igplot")
 ```
 
-## Example
+## Usage
 
-```{r example}
-library(igraph)
+```{r example, out.width = "50%", fig.align = "center"}
 library(igplot)
-library(knitr)
 
 # make graph
-g = erdos.renyi.game(10, .3)
+set.seed(123)
+g = igraph::erdos.renyi.game(10, .35)
 
-# make the same plot twice
+# make plot with igraph package
 set.seed(42)
 tictoc::tic()
-pdf("images/plot1.pdf", width = 6, height = 5)
-plot(g, layout = layout_with_fr)
-dev.off()
-tictoc::toc()
-set.seed(42)
-tictoc::tic()
-igplot(
-    g, 
-    layout = "layout_with_fr", 
-    bg = "white", 
-    outfile = "images/plot2.pdf",
-    width = 6,
-    height = 5,
-    return_dat = FALSE
-)
+plot(g, layout = igraph::layout_with_fr)
 tictoc::toc()
 ```
 
-![](images/plot1.pdf)
-
-
+```{r out.width = "30%", fig.align = "center"}
+# make same plot with igplot
+set.seed(42)
+tictoc::tic()
+igplot(g, layout = "layout_with_fr", v_cex = 2, e_lwd = .8, return_dat = FALSE)
+tictoc::toc()
+```
 
 `igplot` should be faster than `plot.igraph` especially for larger graphs:
 
 ```{r fig.show = "hide", cache = TRUE}
 g = erdos.renyi.game(5000, .05)
 tictoc::tic()
-pdf("images/plot1_large.pdf", width = 6, height = 5)
+pdf("images/plot1.pdf", width = 6, height = 5)
 plot(g, layout = layout_with_fr)
 dev.off()
 tictoc::toc()
@@ -75,7 +64,7 @@ igplot(
     g, 
     layout = "layout_with_fr", 
     bg = "white", 
-    outfile = "images/plot2_large.pdf",
+    outfile = "images/plot2.pdf",
     width = 6,
     height = 5,
     return_dat = FALSE

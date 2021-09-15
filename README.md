@@ -14,26 +14,47 @@ You can install `igplot` with:
 remotes::install_github("baruuum/igplot")
 ```
 
-## Example
+## Usage
 
 ``` r
-library(igraph)
-#> 
-#> Attaching package: 'igraph'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     decompose, spectrum
-#> The following object is masked from 'package:base':
-#> 
-#>     union
 library(igplot)
-library(knitr)
 
 # make graph
-g = erdos.renyi.game(10, .3)
+set.seed(123)
+g = igraph::erdos.renyi.game(10, .35)
 
-# make the same plot twice
+# make plot with igraph package
 set.seed(42)
+tictoc::tic()
+plot(g, layout = igraph::layout_with_fr)
+```
+
+<img src="man/figures/README-example-1.png" width="50%" style="display: block; margin: auto;" />
+
+``` r
+tictoc::toc()
+#> 0.029 sec elapsed
+```
+
+``` r
+# make same plot with igplot
+set.seed(42)
+tictoc::tic()
+igplot(g, layout = "layout_with_fr", v_cex = 2, e_lwd = .8, return_dat = FALSE)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" />
+
+``` r
+tictoc::toc()
+#> 0.025 sec elapsed
+```
+
+`igplot` should be faster than `plot.igraph` especially for larger
+graphs:
+
+``` r
+g = erdos.renyi.game(5000, .05)
 tictoc::tic()
 pdf("images/plot1.pdf", width = 6, height = 5)
 plot(g, layout = layout_with_fr)
@@ -41,8 +62,8 @@ dev.off()
 #> quartz_off_screen 
 #>                 2
 tictoc::toc()
-#> 0.07 sec elapsed
-set.seed(42)
+#> 17.652 sec elapsed
+
 tictoc::tic()
 igplot(
     g, 
@@ -54,35 +75,5 @@ igplot(
     return_dat = FALSE
 )
 tictoc::toc()
-#> 0.018 sec elapsed
-```
-
-![](images/plot1.pdf)
-
-`igplot` should be faster than `plot.igraph` especially for larger
-graphs:
-
-``` r
-g = erdos.renyi.game(5000, .05)
-tictoc::tic()
-pdf("images/plot1_large.pdf", width = 6, height = 5)
-plot(g, layout = layout_with_fr)
-dev.off()
-#> quartz_off_screen 
-#>                 2
-tictoc::toc()
-#> 17.895 sec elapsed
-
-tictoc::tic()
-igplot(
-    g, 
-    layout = "layout_with_fr", 
-    bg = "white", 
-    outfile = "images/plot2_large.pdf",
-    width = 6,
-    height = 5,
-    return_dat = FALSE
-)
-tictoc::toc()
-#> 5.906 sec elapsed
+#> 5.603 sec elapsed
 ```

@@ -12,29 +12,33 @@
 #' @param v_pch vertex pch
 #' @param e_color edge color
 #' @param e_lwd edge linewidth
+#' @param e_length length of the arrow when \code{directed} is \code{TRUE}
+#' @param e_angle angle of the arrow when \code{directed} is \code{TRUE}
+#' @param outfile path to file
 #' @param width width of the pdf file (in inches)
 #' @param height height of the pdf file (in inches)
-#' @param outfile name of the output file
-#' @param return_dat whether to return the data
+#' @param return_data whether to return the data
+#' @param plot whether to create the plot
 #' @export
 igplot = function(
     g,
-    layout     = NULL,
-    directed   = FALSE,
-    bg_col     = "white",
-    v_frame    = "white",
-    v_fill     = "blue",
-    v_lwd      = .1, 
-    v_pch      = 21,
-    v_cex      = .6, 
-    e_color    = "grey",
-    e_lwd      = .3,
-    e_length   = .25,
-    e_angle    = 30,
-    outfile    = NULL,
-    width      = 7,
-    height     = 7,
-    return_dat = FALSE
+    layout      = NULL,
+    directed    = FALSE,
+    bg_col      = "white",
+    v_frame     = "white",
+    v_fill      = "blue",
+    v_lwd       = .1, 
+    v_pch       = 21,
+    v_cex       = .6, 
+    e_color     = "grey",
+    e_lwd       = .3,
+    e_length    = .25,
+    e_angle     = 30,
+    outfile     = NULL,
+    width       = 7,
+    height      = 7,
+    return_data = FALSE,
+    plot        = TRUE
 ) {
     
     # helper function
@@ -81,19 +85,27 @@ igplot = function(
         nV = igraph::vcount(g)
     
         # check layout 
-        if (class(layout) == "character") {
+        if (!is.null(layout)) {
             
-            layout = utils::getFromNamespace(layout, "igraph")(g)
+            if (class(layout) == "character") {
+                
+                layout = utils::getFromNamespace(layout, "igraph")(g)
+                
+            } else {
+                
+                stopifnot(
+                    NCOL(layout) == 2,
+                    NROW(layout) == nV
+                )
+                
+            }
             
         } else {
             
-            stopifnot(
-                NCOL(layout) == 2,
-                NROW(layout) == nV
-            )
+            layout = utils::getFromNamespace("layout.auto", "igraph")(g)
             
         }
-        
+            
         # get vertices
         v_names = igraph::vertex_attr(g, "name")
         if (length(v_names) == 0) {
@@ -160,66 +172,69 @@ igplot = function(
         e_lwd    = e_lwd
     )]
     
-    if (!is.null(outfile))
-        pdf(outfile, width = width, height = height)
-    
-    par(oma = rep(0, 4), mar = c(0, 0, 0, 0))
-    plot(
-        v$dim1, 
-        v$dim2, 
-        type = "n",
-        xlab = NA,
-        ylab = NA,
-        axes = F)
-    rect(
-        par("usr")[1],
-        par("usr")[3],
-        par("usr")[2],
-        par("usr")[4],
-        col = bg_col,
-        border = NA
-    )
-    if (directed) {
+    if (plot) {
+        if (!is.null(outfile))
+            pdf(outfile, width = width, height = height)
         
-        e[, `:=`(e_length = e_length, e_angle = e_angle)]
-        
-        arrows(
-            x0 = e$dim1_1, 
-            y0 = e$dim2_1,
-            x = e$dim1_2, 
-            y = e$dim2_2,
-            col = e$e_color,
-            lwd = e$e_lwd,
-            length = e_length,
-            angle = e_angle
+        par(oma = rep(0, 4), mar = c(0, 0, 0, 0))
+        plot(
+            v$dim1, 
+            v$dim2, 
+            type = "n",
+            xlab = NA,
+            ylab = NA,
+            axes = F)
+        rect(
+            par("usr")[1],
+            par("usr")[3],
+            par("usr")[2],
+            par("usr")[4],
+            col = bg_col,
+            border = NA
+        )
+        if (directed) {
+            
+            e[, `:=`(e_length = e_length, e_angle = e_angle)]
+            
+            arrows(
+                x0 = e$dim1_1, 
+                y0 = e$dim2_1,
+                x = e$dim1_2, 
+                y = e$dim2_2,
+                col = e$e_color,
+                lwd = e$e_lwd,
+                length = e_length,
+                angle = e_angle
+            )
+            
+        } else {
+            
+            segments(
+                x0 = e$dim1_1, 
+                y0 = e$dim2_1,
+                x = e$dim1_2, 
+                y = e$dim2_2,
+                col = e$e_color,
+                lwd = e$e_lwd
+            )
+            
+        }    
+        points(
+            v$dim1, 
+            v$dim2, 
+            col = v$v_frame,
+            bg  = v$v_fill,
+            lwd = v$v_lwd,
+            cex = v$v_cex, 
+            pch = v$v_pch
         )
         
-    } else {
+        if (!is.null(outfile))
+            dev.off()
         
-        segments(
-            x0 = e$dim1_1, 
-            y0 = e$dim2_1,
-            x = e$dim1_2, 
-            y = e$dim2_2,
-            col = e$e_color,
-            lwd = e$e_lwd
-        )
-        
-    }    
-    points(
-        v$dim1, 
-        v$dim2, 
-        col = v$v_frame,
-        bg  = v$v_fill,
-        lwd = v$v_lwd,
-        cex = v$v_cex, 
-        pch = v$v_pch
-    )
+    }
     
-    if (!is.null(outfile))
-        dev.off()
-    
-    if (return_dat)
+    if (return_data)
         return(igplotdat(v, e, has_layout = TRUE))
     
 }

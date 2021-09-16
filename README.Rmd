@@ -72,3 +72,4 @@ igplot(
 tictoc::toc()
 ```
 
+See vignette for more examples.

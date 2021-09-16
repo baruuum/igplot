@@ -1,0 +1,92 @@
+---
+title: "igplot"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{igplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 5,
+  fig.height = 3.5,
+  fig.align = "center",
+  comment = "#>"
+)
+```
+
+To demonstrate what this package provides, we first load the package, the `igraph` package, and some data.
+```{r setup, message = FALSE}
+library(igplot)
+library(igraph)
+data(karate, package = "igraphdata")
+```
+
+## Basic Usage & Options
+
+The most basic usage of the `igplot` function is the following:
+```{r}
+set.seed(42)
+igplot(karate, layout = "layout_with_fr")
+```
+where we have set a seed to keep the layout constant across different plots. In fact, you won't even need to specify the `layout` option. In this case, the layout of the graph will be created by the `igraph::layout.auto()` function.
+
+The `igplot` function admits multiple options to change the appearance of the graph. For example, can use different colors for the nodes and edges using the `v_fill` and `e_col` option, respectively, and change the background of the plot with the `bg` option:
+```{r}
+clust = membership(cluster_infomap(karate))
+set.seed(42)
+vcols = viridis::inferno(length(unique(clust)), begin = .2, end = .8)
+igplot(
+    karate, 
+    layout = "layout_with_fr", 
+    bg = "black", 
+    v_fill = vcols[clust], 
+    v_cex = .8,
+    e_col = "white"
+)
+```
+The function doesn't include options for the transparency of the colors. But we can always use the `scales` package for these purposes:
+```{r}
+set.seed(42)
+igplot(
+    karate, 
+    layout = "layout_with_fr", 
+    bg = "black", 
+    v_fill = scales::alpha(vcols[clust], .3), 
+    v_cex = .8,
+    e_col = "white"
+)
+```
+Usually, will export the plot into a `.pdf` file. In the `igplot` function, you can do this by specifying the path to the output file using the `outfile` option together with `width` and `height` to specify the dimensions of the plot (in inches). These options are feeded into the `grDevices::pdf` function.
+
+## Saving data for further use
+
+Often, we want to have a deeper look into a subset of the data. In this case, you can specify the `return_data` option:
+```{r}
+set.seed(42)
+dat = igplot(
+    karate, 
+    layout = "layout_with_fr", 
+    bg = "black", 
+    v_fill = vcols[clust], 
+    v_cex = .8,
+    e_col = "white",
+    return_data = TRUE,
+    plot = FALSE
+)
+```
+where the `plot = FALSE` option means that we don't want to see the plot. When `return_data` is `TRUE` the function returns an object of class `igplotdat`, which is simply a list with two elements: a `data.table` for the vertices and a `data.table` for the edges:
+```{r}
+# check class of the returned data
+class(dat)
+
+# class and first five lines of the vertices slot
+class(dat$vertices)
+head(dat$vertices)
+
+# class and first five lines of the edges slot
+class(dat$edges)
+head(dat$edges)
+```

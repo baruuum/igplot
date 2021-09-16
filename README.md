@@ -33,7 +33,7 @@ plot(g, layout = igraph::layout_with_fr)
 
 ``` r
 tictoc::toc()
-#> 0.029 sec elapsed
+#> 0.037 sec elapsed
 ```
 
 ``` r
@@ -47,7 +47,7 @@ igplot(g, layout = "layout_with_fr", v_cex = 2, e_lwd = .8, return_dat = FALSE)
 
 ``` r
 tictoc::toc()
-#> 0.025 sec elapsed
+#> 0.023 sec elapsed
 ```
 
 `igplot` should be faster than `plot.igraph` especially for larger
@@ -77,3 +77,5 @@ igplot(
 tictoc::toc()
 #> 5.603 sec elapsed
 ```
+
+See vignette for more examples.

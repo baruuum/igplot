@@ -22,7 +22,8 @@ igplot(
   outfile = NULL,
   width = 7,
   height = 7,
-  return_dat = FALSE
+  return_data = FALSE,
+  plot = TRUE
 )
 }
 \arguments{
@@ -48,11 +49,17 @@ igplot(
 
 \item{e_lwd}{edge linewidth}
 
-\item{outfile}{name of the output file}
+\item{e_length}{length of the arrow when \code{directed} is \code{TRUE}}
+
+\item{e_angle}{angle of the arrow when \code{directed} is \code{TRUE}}
+
+\item{outfile}{path to file}
 
 \item{width}{width of the pdf file (in inches)}
 
 \item{height}{height of the pdf file (in inches)}
 
-\item{return_dat}{whether to return the data}
+\item{return_data}{whether to return the data}
+
+\item{plot}{whether to create the plot}
 }

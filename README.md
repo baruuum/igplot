@@ -6,10 +6,11 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/baruuum/igplot/workflows/R-CMD-check/badge.svg)](https://github.com/baruuum/igplot/actions)
+
 <!-- badges: end -->
 
-This is just a simple wraper around the `base::plot` function to create
-network plots faster than `igraph`.
+The `igplot` package offers a simplified version of the `plot.igraph`
+that creates network plots from `igraph` objects.
 
 ## Installation
 
@@ -19,10 +20,19 @@ You can install `igplot` with:
 remotes::install_github("baruuum/igplot")
 ```
 
-## Usage
+## Basic Usage
+
+The package is designed to plot `igraph` objects faster by simplifying
+the `plot.igraph` function. This means that less options are available.
+However, for moderate to large graphs, the `igplot` function should be
+faster than the `plot.igraph` function.
+
+The main function of the `igplot` package is, unsurprisingly, the
+`igplot` function. The basic usage is as follows.
 
 ``` r
 library(igplot)
+#> Loading required package: data.table
 
 # make graph
 set.seed(123)
@@ -30,21 +40,20 @@ g = igraph::erdos.renyi.game(10, .35)
 
 # make plot with igraph package
 set.seed(42)
-tictoc::tic()
-plot(g, layout = igraph::layout_with_fr)
+plot(
+    g, 
+    layout = igraph::layout_with_fr, 
+    vertex.color = "blue", 
+    vertex.label = NA, 
+    vertex.size = 5
+)
 ```
 
 <img src="man/figures/README-example-1.png" width="50%" style="display: block; margin: auto;" />
 
 ``` r
-tictoc::toc()
-#> 0.036 sec elapsed
-```
-
-``` r
 # make same plot with igplot
 set.seed(42)
-tictoc::tic()
 igplot(
     g, 
     layout = "layout_with_fr", 
@@ -55,39 +64,54 @@ igplot(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" />
+<img src="man/figures/README-example2-1.png" width="40%" style="display: block; margin: auto;" />
+
+## Speed comaprison
+
+Here’s a short speed comparison between these two functions run on MacOS
+with a 2.4 GHz 8-Core Intel Core i9 processor:
 
 ``` r
-tictoc::toc()
-#> 0.059 sec elapsed
+compare_plot = function(n) {
+    
+    g = igraph::erdos.renyi.game(n, .01)
+    
+    set.seed(111)
+    tictoc::tic()
+    pdf("tmp.pdf", width = 5, height = 5)
+    plot(g, layout = igraph::layout_with_fr) 
+    dev.off()
+    x = tictoc::toc(quiet = TRUE)
+    
+    set.seed(111)
+    tictoc::tic()
+    igplot(g, layout = "layout_with_fr", outfile = "tmp.pdf", width = 5, height = 5)
+    y = tictoc::toc(quiet = TRUE)
+    
+    return(c(igraph = x$toc - x$tic, igplot = y$toc - y$tic))
+    
+}
+
+# create plots of different sizes
+gsize = c(100, 500, 1000, 2500, 5000, 10000, 20000)
+res = sapply(gsize, compare_plot)
+
+# colors
+cols = c(scales::alpha("blue", .6), scales::alpha("red", .6))
+
+# create graph
+par(mfrow = c(1, 1))
+plot(gsize, type = "n", xlim = c(min(gsize), max(gsize)), ylim = c(0, max(res)),
+     xlab = "No. of Vertices", ylab = "Ellapsed Time (seconds)")
+points(gsize, res[1, ], pch = 19, col = cols[1], type = "b")
+points(gsize, res[2, ], pch = 19, col = cols[2], type = "b")
+legend("topleft", c("plot.igraph", "igplot"), lty = 1, col = cols, pch = 19)
 ```
 
-`igplot` should be faster than `plot.igraph` especially for larger
-graphs:
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" />
 
-``` r
-g = erdos.renyi.game(5000, .05)
-tictoc::tic()
-pdf("images/plot1.pdf", width = 6, height = 5)
-plot(g, layout = layout_with_fr)
-dev.off()
-#> quartz_off_screen 
-#>                 2
-tictoc::toc()
-#> 17.652 sec elapsed
+## Other functionalities
 
-tictoc::tic()
-igplot(
-    g, 
-    layout = "layout_with_fr", 
-    bg = "white", 
-    outfile = "images/plot2.pdf",
-    width = 6,
-    height = 5,
-    return_dat = FALSE
-)
-tictoc::toc()
-#> 5.603 sec elapsed
-```
-
-See vignette for more examples.
+The `igplot` package provides also some functions to rotate graphs in
+order to make them comparable and functions to plot subsets of the
+vertices. See vignette for more examples.

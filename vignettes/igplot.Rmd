@@ -33,7 +33,16 @@ igplot(karate, layout = "layout_with_fr")
 ```
 where we have set a seed to keep the layout constant across different plots. In fact, you won't even need to specify the `layout` option. In this case, the layout of the graph will be created by the `igraph::layout.auto()` function.
 
+When our graph is directed, we can incorporated this information by specifiying the `directed = TRUE` option.
+
+```{r}
+set.seed(123)
+g = erdos.renyi.game(15, .15, directed = TRUE)
+igplot(g, directed = T)
+```
+
 The `igplot` function admits multiple options to change the appearance of the graph. For example, can use different colors for the nodes and edges using the `v_fill` and `e_col` option, respectively, and change the background of the plot with the `bg` option:
+
 ```{r}
 clust = membership(cluster_infomap(karate))
 set.seed(42)
@@ -64,6 +73,8 @@ igplot(
 )
 ```
 Usually, will export the plot into a `.pdf` file. In the `igplot` function, you can do this by specifying the path to the output file using the `outfile` option together with `width` and `height` to specify the dimensions of the plot (in inches). These options are feeded into the `grDevices::pdf` function.
+
+
 
 ## Saving data for further use
 
@@ -129,17 +140,30 @@ When plotting networks over time, we often face the problem that position of nod
 
 To demonstrate how the function works, we first create two graphs that are only slightly different but give different plotting results (even with the same random seed).
 ```{r}
-# add one edge
+# add two edges
 karate_2 = add_edges(
     karate, c("Mr Hi", "Actor 17", "Actor 13", "Actor 17")
 )
 
 set.seed(42)
-dat_org = igplot(karate, layout = "layout_with_fr", return_data = TRUE)
+dat_org = igplot(
+    karate, 
+    layout = "layout_with_fr", 
+    plot_opts = list(v_fill = vcols[clust]),
+    bg_col = "black",
+    return_data = TRUE
+)
 set.seed(42)
-dat_new = igplot(karate_2, layout = "layout_with_fr", return_data = TRUE)
+dat_new = igplot(
+    karate_2, 
+    layout = "layout_with_fr", 
+    plot_opts = list(v_fill = vcols[clust]),
+    bg_col = "black",
+    return_data = TRUE
+)
+
 ```
-Next, we apply the procrustes transform to the coordinates of `dat_new` with the coordinates of `dat_org` as the target. 
+We see that the positions of the clusters have changed, even though we used the same random seed when calculating the layout. To bring the plots into alignment, we can apply the procrustes transform to the coordinates of `dat_new` with the coordinates of `dat_org` as the target. 
 ```{r}
 # procrustes transform of layout
 dat_new_procrustes = procrustes(dat_new, dat_org)
@@ -150,6 +174,6 @@ class(dat_new_procrustes)
 The `procrustes` function returns an `igplotdat` object when the first argument is an `igplotdat` object. Otherwise, it will return a `matrix` with two columns that correspond to the first and second dimension of the transformed layout. Since the output is a `igplotdat` object, we can plot it immediately with the `igplot` function.
 ```{r}
 # plot transformed graph
-igplot(dat_new_procrustes)
+igplot(dat_new_procrustes, bg_col = "black")
 ```
 As the underlying graphs are different, the transform brings the plots not into perfect alignment. Still, it rotates and scales the plot, such that the "Mr Hi" and "John A" factions are clearly on the same side as in the original plot. 

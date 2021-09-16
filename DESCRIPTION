@@ -6,7 +6,7 @@ Authors@R:
            family = "Park",
            role = c("aut", "cre"),
            email = "baruuum@gmail.com")
-Description: plots igraph object using base::plot
+Description: simplifies the plot.igraph function for faster plotting of igraph objects
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

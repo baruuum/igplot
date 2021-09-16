@@ -1,6 +1,6 @@
 #' igplot: fast(er) plotting of igraph objects
 #' 
-#' This function uses the base::plot function to plot igraph objects.
+#' This package simlifies the plot.igraph function for faster plotting of igraph objects
 #' 
 #' @docType package
 #' @name igplot

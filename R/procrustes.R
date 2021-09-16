@@ -36,7 +36,7 @@ procrustes = function(x, y) {
     # check dimensions
     stopifnot(all(dim(x) == dim(y)))
     
-    res = igplot:::.transform_procrustes(x_layout, y_layout, translation = TRUE, scale = TRUE)
+    res = .transform_procrustes(x_layout, y_layout, translation = TRUE, scale = TRUE)
     
     if (!is.igplotdat(x)) 
         return(res$Xstar)

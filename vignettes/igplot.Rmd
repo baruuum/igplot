@@ -131,7 +131,7 @@ To demonstrate how the function works, we first create two graphs that are only 
 ```{r}
 # add one edge
 karate_2 = add_edges(
-    karate, c("Mr Hi", "Actor 32", "Actor 13", "Actor 17")
+    karate, c("Mr Hi", "Actor 17", "Actor 13", "Actor 17")
 )
 
 set.seed(42)
@@ -141,7 +141,15 @@ dat_new = igplot(karate_2, layout = "layout_with_fr", return_data = TRUE)
 ```
 Next, we apply the procrustes transform to the coordinates of `dat_new` with the coordinates of `dat_org` as the target. 
 ```{r}
+# procrustes transform of layout
 dat_new_procrustes = procrustes(dat_new, dat_org)
+
+# check class
+class(dat_new_procrustes)
+```
+The `procrustes` function returns an `igplotdat` object when the first argument is an `igplotdat` object. Otherwise, it will return a `matrix` with two columns that correspond to the first and second dimension of the transformed layout. Since the output is a `igplotdat` object, we can plot it immediately with the `igplot` function.
+```{r}
+# plot transformed graph
 igplot(dat_new_procrustes)
 ```
-As the underlying graphs are different, the transform brings the plots not in perfect alignment. Still, it rotates and scales the plot, such that the "Mr Hi" and "John A" are clearly on the same side of the plot. 
+As the underlying graphs are different, the transform brings the plots not into perfect alignment. Still, it rotates and scales the plot, such that the "Mr Hi" and "John A" factions are clearly on the same side as in the original plot. 

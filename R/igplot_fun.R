@@ -22,6 +22,7 @@
 #'     \item \code{e_lwd}, edge linewidth
 #'     \item \code{e_length}, length of the arrow when \code{directed} is \code{TRUE}
 #'     \item \code{e_angle}, angle of the arrow when \code{directed} is \code{TRUE}
+#'     \item \code{e_code}, type of the arrow when \code{directed} is \code{TRUE}
 #' }
 #' @export
 igplot = function(
@@ -47,8 +48,9 @@ igplot = function(
         v_cex       = .6, 
         e_col       = "darkgrey",
         e_lwd       = .3,
-        e_length    = .25,
-        e_angle     = 30
+        e_length    = .125,
+        e_angle     = 15,
+        e_code      = 2
     )
     
     # override with provided options
@@ -120,7 +122,7 @@ igplot = function(
         setnames(e, c("name1", "name2"))
         
         # add layout to edges
-        e = igplot:::merge_layout(v, e)
+        e = merge_layout(v, e)
         
         # add vertex attributes
         v[, `:=`(
@@ -156,7 +158,7 @@ igplot = function(
             }
             
             g$vertices = cbind(g$vertices, layout)
-            g$edges = igplot:::merge_layout(g$vertices, g$edges)
+            g$edges = merge_layout(g$vertices, g$edges)
             
         }
         
@@ -231,7 +233,7 @@ igplot = function(
         )
         if (directed) {
             
-            e[, `:=`(e_length = p_opts$e_length, e_angle = p_opts$e_angle)]
+            # e[, `:=`(e_length = p_opts$e_length, e_angle = p_opts$e_angle)]
             
             arrows(
                 x0 = e$dim1_1, 
@@ -240,8 +242,8 @@ igplot = function(
                 y = e$dim2_2,
                 col = e$e_col,
                 lwd = e$e_lwd,
-                length = e_length,
-                angle = e_angle
+                length = p_opts$e_length,
+                angle = p_opts$e_angle
             )
             
         } else {

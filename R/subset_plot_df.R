@@ -70,25 +70,6 @@ subset_plot_df = function(
             (name1 %in% v_names) & (name2 %in% v_names)
         ]
         x$edges = el
-        # c_names = data.table(
-        #     # all not-selected vertices
-        #     en = c(
-        #         el[!(name1 %in% v_names), name1],
-        #         el[!(name2 %in% v_names), name2]
-        #     )
-        # )[
-        #     # count number
-        #     , N := .N, by = "en"
-        # ][
-        #     # keep only nodes that are connected to at least two of selected ones
-        #     N > 1L
-        # ]
-        # 
-        # # select only edges that connect nodes among selected nodes
-        # new_v_names = c(v_names, c_names$en)
-        # ve_list$e_dat = el[
-        #     (name1 %in% new_v_names) & (name2 %in% new_v_names)
-        # ]
         
     }
     

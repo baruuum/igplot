@@ -10,8 +10,8 @@ igplotdat = function(
     has_layout = TRUE
 ) {
     
-    x = igplot:::.create_igplotdat(v, e, has_layout)
-    igplot:::.check_igplotdat(x)
+    x = .create_igplotdat(v, e, has_layout)
+    .check_igplotdat(x)
     
 }
 

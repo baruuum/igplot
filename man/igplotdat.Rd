@@ -6,6 +6,13 @@
 \usage{
 igplotdat(v = data.table(), e = data.table(), has_layout = TRUE)
 }
+\arguments{
+\item{v}{vertex data (\code{data.table})}
+
+\item{e}{edge data (\code{data.table})}
+
+\item{has_layout}{boolean; \code{TRUE} if layout information are included and zero otherwise}
+}
 \description{
 iplotdat helper
 }

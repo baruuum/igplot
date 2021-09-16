@@ -16,8 +16,7 @@ using namespace arma;
 //'     \item the scaling factor \code{sigma}
 //' }
 //' The transformed matrix \code{Xstar} can be recreated by the equation \code{sigma * X * R} if \code{translation} is \code{FALSE}. If \code{translation} is \code{TRUE}, adding \code{t_vec} to each row of the matrix \code{sigma * X * R} completes the transformation.
-//' @export
-//[[Rcpp::export]]
+//[[Rcpp::export(.transform_procrustes)]]
 Rcpp::List procrustes(
         const mat &X,                // input
         const mat &target,           // target positions
@@ -47,7 +46,6 @@ Rcpp::List procrustes(
     
     if (scale)
         sigma = sum(diagvec(Y * R)) / sum(diagvec(X.t() * J * X));
-    
     
     mat Xstar = sigma * X * R;
     rowvec t_vec(k);

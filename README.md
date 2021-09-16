@@ -33,21 +33,28 @@ plot(g, layout = igraph::layout_with_fr)
 
 ``` r
 tictoc::toc()
-#> 0.037 sec elapsed
+#> 0.026 sec elapsed
 ```
 
 ``` r
 # make same plot with igplot
 set.seed(42)
 tictoc::tic()
-igplot(g, layout = "layout_with_fr", v_cex = 2, e_lwd = .8, return_dat = FALSE)
+igplot(
+    g, 
+    layout = "layout_with_fr", 
+    plot_opts = list(
+        v_cex = 2, 
+        e_lwd = .8
+    )
+)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" />
 
 ``` r
 tictoc::toc()
-#> 0.023 sec elapsed
+#> 0.024 sec elapsed
 ```
 
 `igplot` should be faster than `plot.igraph` especially for larger

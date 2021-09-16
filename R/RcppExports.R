@@ -15,8 +15,7 @@
 #'     \item the scaling factor \code{sigma}
 #' }
 #' The transformed matrix \code{Xstar} can be recreated by the equation \code{sigma * X * R} if \code{translation} is \code{FALSE}. If \code{translation} is \code{TRUE}, adding \code{t_vec} to each row of the matrix \code{sigma * X * R} completes the transformation.
-#' @export
-procrustes <- function(X, target, translation = TRUE, scale = TRUE) {
+.transform_procrustes <- function(X, target, translation = TRUE, scale = TRUE) {
     .Call(`_igplot_procrustes`, X, target, translation, scale)
 }
 

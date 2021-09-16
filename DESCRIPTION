@@ -7,15 +7,21 @@ Authors@R:
            role = c("aut", "cre"),
            email = "baruuum@gmail.com")
 Description: What the package does (one paragraph).
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Depends:
+    R (>= 4.0.0),
+    data.table(>= 1.14.0)
 Suggests: 
     knitr,
     rmarkdown,
-    tinytest
+    tinytest,
+    scales,
+    viridis,
+    igraphdata
 Imports: Rcpp (>= 1.0.7), igraph(>= 1.2.6), data.table(>= 1.14.0)
 LinkingTo: Rcpp, RcppArmadillo
 VignetteBuilder: knitr

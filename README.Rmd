@@ -45,7 +45,14 @@ tictoc::toc()
 # make same plot with igplot
 set.seed(42)
 tictoc::tic()
-igplot(g, layout = "layout_with_fr", v_cex = 2, e_lwd = .8, return_dat = FALSE)
+igplot(
+    g, 
+    layout = "layout_with_fr", 
+    plot_opts = list(
+        v_cex = 2, 
+        e_lwd = .8
+    )
+)
 tictoc::toc()
 ```
 

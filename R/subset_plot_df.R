@@ -16,6 +16,9 @@ subset_plot_df = function(
     if (class(x) != "igplotdat")
         stop("`x` has to be a `igplotdat` object")
     
+    # set NULL values to avoid R CMD check notes
+    name1 = name2 = NULL
+    
     keep = match.arg(keep_edges, several.ok = FALSE)
     
     stopifnot(

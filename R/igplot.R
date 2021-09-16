@@ -39,6 +39,9 @@ igplot = function(
     corp        = FALSE
 ) {
     
+    # assign NULL to avoid R CMD check notes
+    dim1_1 = dim1_2 = dim2_1 = dim2_2 = NULL
+    
     # default plotting options
     p_opts = list(
         v_frame     = "white",
@@ -238,8 +241,8 @@ igplot = function(
             arrows(
                 x0 = e$dim1_1, 
                 y0 = e$dim2_1,
-                x = e$dim1_2, 
-                y = e$dim2_2,
+                x1 = e$dim1_2, 
+                y1 = e$dim2_2,
                 col = e$e_col,
                 lwd = e$e_lwd,
                 length = p_opts$e_length,
@@ -251,8 +254,8 @@ igplot = function(
             segments(
                 x0 = e$dim1_1, 
                 y0 = e$dim2_1,
-                x = e$dim1_2, 
-                y = e$dim2_2,
+                x1 = e$dim1_2, 
+                y1 = e$dim2_2,
                 col = e$e_col,
                 lwd = e$e_lwd
             )

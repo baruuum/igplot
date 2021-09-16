@@ -22,6 +22,6 @@ Suggests:
     scales,
     viridis,
     igraphdata
-Imports: Rcpp (>= 1.0.7), igraph(>= 1.2.6), data.table(>= 1.14.0)
+Imports: Rcpp (>= 1.0.7), igraph(>= 1.2.6)
 LinkingTo: Rcpp, RcppArmadillo
 VignetteBuilder: knitr

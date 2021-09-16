@@ -15,6 +15,10 @@ knitr::opts_chunk$set(
 
 # igplot
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/baruuum/igplot/workflows/R-CMD-check/badge.svg)](https://github.com/baruuum/igplot/actions)
+<!-- badges: end -->
+
 This is just a simple wraper around the `base::plot` function to create network plots faster than `igraph`.
 
 ## Installation

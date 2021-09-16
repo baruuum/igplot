@@ -3,6 +3,11 @@
 
 # igplot
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/baruuum/igplot/workflows/R-CMD-check/badge.svg)](https://github.com/baruuum/igplot/actions)
+<!-- badges: end -->
+
 This is just a simple wraper around the `base::plot` function to create
 network plots faster than `igraph`.
 
@@ -33,7 +38,7 @@ plot(g, layout = igraph::layout_with_fr)
 
 ``` r
 tictoc::toc()
-#> 0.026 sec elapsed
+#> 0.036 sec elapsed
 ```
 
 ``` r
@@ -54,7 +59,7 @@ igplot(
 
 ``` r
 tictoc::toc()
-#> 0.024 sec elapsed
+#> 0.059 sec elapsed
 ```
 
 `igplot` should be faster than `plot.igraph` especially for larger

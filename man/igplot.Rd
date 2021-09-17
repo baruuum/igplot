@@ -43,7 +43,7 @@ igplot(
 \item{corp}{boolean; if \code{TRUE} corps the image to the positions of nodes}
 }
 \description{
-This function uses the base::plot function to plot igraph objects.
+This package simlifies the plot.igraph function for faster plotting of igraph objects
 }
 \details{
 Currently, the following options are supported for the \code{plot_opts} list:

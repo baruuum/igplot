@@ -42,7 +42,7 @@ procrustes = function(x, y) {
         return(res$Xstar)
     
     x$vertices[, c("dim1", "dim2") := list(res$Xstar[, 1L], res$Xstar[, 2L])]
-    x$edges = igplot:::merge_layout(
+    x$edges = merge_layout(
         x$vertices, 
         x$edges[, !grepl("^dim\\d_\\d", names(x$edges)), with = F]
     )

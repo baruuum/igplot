@@ -192,11 +192,12 @@ igplot = function(
         
         old_oma = par()$oma
         old_mar = par()$mar
-        
+        old_bg  = par()$bg
+
         if (!is.null(outfile))
             pdf(outfile, width = width, height = height)
         
-        par(oma = rep(0, 4), mar = c(0, 0, 0, 0))
+        par(oma = rep(0, 4), mar = rep(0, 4), bg = bg_col)
         if (corp) {
             
             plot(
@@ -226,17 +227,7 @@ igplot = function(
                 axes = F)
             
         }
-        rect(
-            par("usr")[1],
-            par("usr")[3],
-            par("usr")[2],
-            par("usr")[4],
-            col = bg_col,
-            border = NA
-        )
         if (directed) {
-            
-            # e[, `:=`(e_length = p_opts$e_length, e_angle = p_opts$e_angle)]
             
             arrows(
                 x0 = e$dim1_1, 
@@ -275,7 +266,7 @@ igplot = function(
             dev.off()
         
         # switch back to old pars
-        par(oma = old_oma, mar = old_mar)
+        par(oma = old_oma, mar = old_mar, bg = old_bg)
         
     }
     

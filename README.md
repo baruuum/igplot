@@ -32,7 +32,6 @@ The main function of the `igplot` package is, unsurprisingly, the
 
 ``` r
 library(igplot)
-#> Loading required package: data.table
 
 # make graph
 set.seed(123)
@@ -110,8 +109,9 @@ legend("topleft", c("plot.igraph", "igplot"), lty = 1, col = cols, pch = 19)
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" />
 
-## Other functionalities
+## Other Functionalities
 
 The `igplot` package provides also some functions to rotate graphs in
 order to make them comparable and functions to plot subsets of the
-vertices. See vignette for more examples.
+vertices. See vignette by typing `vignette("igplot")` into the `R`
+console for more examples.

@@ -54,6 +54,8 @@ plot(
     vertex.size = 5
 )
 ```
+
+
 ``````{r example2, out.width = "40%", fig.align = "center"}
 # make same plot with igplot
 set.seed(42)

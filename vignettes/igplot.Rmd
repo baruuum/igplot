@@ -27,10 +27,12 @@ data(karate, package = "igraphdata")
 ## Basic Usage & Options
 
 The most basic usage of the `igplot` function is the following:
+
 ```{r}
 set.seed(42)
 igplot(karate, layout = "layout_with_fr")
 ```
+
 where we have set a seed to keep the layout constant across different plots. In fact, you won't even need to specify the `layout` option. In this case, the layout of the graph will be created by the `igraph::layout.auto()` function.
 
 When our graph is directed, we can incorporated this information by specifiying the `directed = TRUE` option.
@@ -58,7 +60,9 @@ igplot(
     )
 )
 ```
+
 The function doesn't include options for the transparency of the colors. But we can always use the `scales` package for these purposes:
+
 ```{r}
 set.seed(42)
 igplot(
@@ -72,6 +76,7 @@ igplot(
     )
 )
 ```
+
 Usually, will export the plot into a `.pdf` file. In the `igplot` function, you can do this by specifying the path to the output file using the `outfile` option together with `width` and `height` to specify the dimensions of the plot (in inches). These options are feeded into the `grDevices::pdf` function.
 
 
@@ -79,6 +84,7 @@ Usually, will export the plot into a `.pdf` file. In the `igplot` function, you 
 ## Saving data for further use
 
 Often, we want to have a deeper look into a subset of the data. In this case, you can specify the `return_data` option:
+
 ```{r}
 set.seed(42)
 dat = igplot(
@@ -94,17 +100,22 @@ dat = igplot(
     plot = FALSE
 )
 ```
+
 where the `plot = FALSE` option means that we don't want to see the plot. When `return_data` is `TRUE` the function returns an object of class `igplotdat`, which is simply a list with two elements: a `data.table` for the vertices and a `data.table` for the edges:
+
 ```{r}
 # check class of the returned data
 class(dat)
 class(dat$vertices)
 class(dat$edges)
 ```
+
 To get the first couple of rows of each of these `data.table`s, you can just print the object:
+
 ```{r}
 dat
 ```
+
 The `dim{i}` and `dim{i}_{j}` columns contain the coordinates of the vertices and edges respectively. 
 
 ## Subsetting graphs
@@ -117,18 +128,25 @@ Currently, subsetting is only supported for
   2. a variable that is not contained in the `vertices` slot of a `igplotdat` object. In this case, you need to provide the `sub_var` option with a `logical` vector that is of the same length as the number of rows in `vertices`. The `sub_val` option will be ignored in this case.
 
 For example, if we want to extract the data for vertices for which `clust == 2`, we can use the following code:
+
 ```{r}
 sub_dat = subset_plot_df(dat, sub_var = (clust == 2), keep_edges = "all")
 ```
+
 Plotting the subsetted data is then straightforward:
+
 ```{r}
 igplot(sub_dat, bg_col = "black")
 ```
+
 Notice that all edges are are plotted, even if they are not connected to the nodes of interest (although the nodes for which `clust == 2` is `FALSE` are not plotted). To plot only those nodes belonging to the second cluster, we can specify the `corp` option:
+
 ```{r}
 igplot(sub_dat, bg_col = "black", corp = TRUE)
 ```
+
 We can also go one step further and drop all edges that do not connect two vertices of the subgroup of interest entirely by using the `keep_edges` option in the `subset_plot_df` function:
+
 ```{r}
 sub_dat2 = subset_plot_df(dat, sub_var = (clust == 2), keep_edges = "within")
 igplot(sub_dat2, bg_col = "black")
@@ -139,6 +157,7 @@ igplot(sub_dat2, bg_col = "black")
 When plotting networks over time, we often face the problem that position of nodes are arbitrarily rotated even when the underlying graph remains quite similar. In these situations, we can use a procrustes transform to realign the graphs. 
 
 To demonstrate how the function works, we first create two graphs that are only slightly different but give different plotting results (even with the same random seed).
+
 ```{r}
 # add two edges
 karate_2 = add_edges(
@@ -161,9 +180,10 @@ dat_new = igplot(
     bg_col = "black",
     return_data = TRUE
 )
-
 ```
+
 We see that the positions of the clusters have changed, even though we used the same random seed when calculating the layout. To bring the plots into alignment, we can apply the procrustes transform to the coordinates of `dat_new` with the coordinates of `dat_org` as the target. 
+
 ```{r}
 # procrustes transform of layout
 dat_new_procrustes = procrustes(dat_new, dat_org)
@@ -171,9 +191,12 @@ dat_new_procrustes = procrustes(dat_new, dat_org)
 # check class
 class(dat_new_procrustes)
 ```
+
 The `procrustes` function returns an `igplotdat` object when the first argument is an `igplotdat` object. Otherwise, it will return a `matrix` with two columns that correspond to the first and second dimension of the transformed layout. Since the output is a `igplotdat` object, we can plot it immediately with the `igplot` function.
+
 ```{r}
 # plot transformed graph
 igplot(dat_new_procrustes, bg_col = "black")
 ```
+
 As the underlying graphs are different, the transform brings the plots not into perfect alignment. Still, it rotates and scales the plot, such that the "Mr Hi" and "John A" factions are clearly on the same side as in the original plot. 

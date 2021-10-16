@@ -20,7 +20,7 @@ Suggests:
     viridis,
     igraphdata
 Imports: 
-    igraph(>= 1.2.6),
+    igraph(>= 1.2.7),
     data.table(>= 1.14.0),
     Rcpp (>= 1.0.7)
 LinkingTo: Rcpp, RcppArmadillo

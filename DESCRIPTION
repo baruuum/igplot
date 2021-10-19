@@ -12,6 +12,7 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+BugReports: https://github.com/baruuum/igplot/issues
 Depends:
     R (>= 4.0.0)
 Suggests: 
@@ -27,3 +28,4 @@ Imports:
     Rcpp (>= 1.0.7)
 LinkingTo: Rcpp, RcppArmadillo
 VignetteBuilder: knitr
+URL: https://github.com/baruuum/igplot

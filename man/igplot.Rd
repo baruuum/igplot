@@ -57,6 +57,5 @@ Currently, the following options are supported for the \code{plot_opts} list:
 \item \code{e_lwd}, edge linewidth
 \item \code{e_length}, length of the arrow when \code{directed} is \code{TRUE}
 \item \code{e_angle}, angle of the arrow when \code{directed} is \code{TRUE}
-\item \code{e_code}, type of the arrow when \code{directed} is \code{TRUE}
 }
 }

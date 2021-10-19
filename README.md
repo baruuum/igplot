@@ -10,7 +10,9 @@
 <!-- badges: end -->
 
 The `igplot` package offers a simplified version of the `plot.igraph`
-that creates network plots from `igraph` objects.
+that creates network plots from `igraph` objects. The main function
+provided by the package is, unsurprisingly, `igplot::igplot` which is a
+wrapper around the `base::plot` function.
 
 ## Installation
 
@@ -22,13 +24,14 @@ remotes::install_github("baruuum/igplot")
 
 ## Basic Usage
 
-The package is designed to plot `igraph` objects faster by simplifying
-the `plot.igraph` function. This means that less options are available.
-However, for moderate to large graphs, the `igplot` function should be
-faster than the `plot.igraph` function.
+The package is designed to plot `igraph` objects faster than the
+`igraph::plot.igraph` function. This means that less options are
+available. However, for moderate to large graphs, the `igplot` function
+should be faster than the `plot.igraph` function.
 
-The main function of the `igplot` package is, unsurprisingly, the
-`igplot` function. The basic usage is as follows.
+The basic usage of the package is described below:
+
+Instead of using the `plot` method for `igraph` objects,
 
 ``` r
 library(igplot)
@@ -50,6 +53,9 @@ plot(
 
 <img src="man/figures/README-example-1.png" width="50%" style="display: block; margin: auto;" />
 
+you can use the `igplot` function, where plotting options are specified
+as a `list` with the `plot_opts` option.
+
 ``` r
 # make same plot with igplot
 set.seed(42)
@@ -63,7 +69,9 @@ igplot(
 )
 ```
 
-<img src="man/figures/README-example2-1.png" width="40%" style="display: block; margin: auto;" />
+<img src="man/figures/README-example2-1.png" width="30%" style="display: block; margin: auto;" />
+
+The available plotting options can be found by typing `?igplot::igplot`.
 
 ## Speed comaprison
 

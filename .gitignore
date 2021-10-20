@@ -41,3 +41,6 @@ inst/doc
 tmp.pdf
 /doc/
 /Meta/
+
+*.o
+*.so

@@ -1,7 +1,7 @@
-pandoc: '2.13'
+pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   igplot: igplot.html
-last_built: 2021-10-20T03:36Z
+last_built: 2021-10-20T03:47Z
 

@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">igplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/igplot.html">Get started</a>
 </li>
@@ -52,7 +48,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/baruuum/igplot/">
+  <a href="https://github.com/baruuum/igplot/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -73,7 +69,7 @@
       <h1 data-toc-skip>igplot</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/baruuum/igplot/blob/master/vignettes/igplot.Rmd"><code>vignettes/igplot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/baruuum/igplot/blob/HEAD/vignettes/igplot.Rmd" class="external-link"><code>vignettes/igplot.Rmd</code></a></small>
       <div class="hidden name"><code>igplot.Rmd</code></div>
 
     </div>
@@ -82,34 +78,34 @@
     
 <p>To demonstrate what this package provides, we first load the package, the <code>igraph</code> package, and some data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/baruuum/igplot">igplot</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://igraph.org">igraph</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">karate</span>, package <span class="op">=</span> <span class="st">"igraphdata"</span><span class="op">)</span></code></pre></div>
-<div id="basic-usage-options" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-usage-options" class="anchor"></a>Basic Usage &amp; Options</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/baruuum/igplot" class="external-link">igplot</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://igraph.org" class="external-link">igraph</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">karate</span>, package <span class="op">=</span> <span class="st">"igraphdata"</span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="basic-usage-options">Basic Usage &amp; Options<a class="anchor" aria-label="anchor" href="#basic-usage-options"></a>
+</h2>
 <p>The most basic usage of the <code>igplot</code> function is the following:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
 <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span><span class="va">karate</span>, layout <span class="op">=</span> <span class="st">"layout_with_fr"</span><span class="op">)</span></code></pre></div>
 <p><img src="igplot_files/figure-html/unnamed-chunk-2-1.png" width="432" style="display: block; margin: auto;"></p>
-<p>where we have set a seed to keep the layout constant across different plots. In fact, you won’t even need to specify the <code>layout</code> option. In this case, the layout of the graph will be created by the <code><a href="https://rdrr.io/pkg/igraph/man/layout_nicely.html">igraph::layout.auto()</a></code> function.</p>
+<p>where we have set a seed to keep the layout constant across different plots. In fact, you won’t even need to specify the <code>layout</code> option. In this case, the layout of the graph will be created by the <code><a href="https://rdrr.io/pkg/igraph/man/layout_nicely.html" class="external-link">igraph::layout.auto()</a></code> function.</p>
 <p>When our graph is directed, we can incorporated this information by specifiying the <code>directed = TRUE</code> option.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">g</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/igraph/man/erdos.renyi.game.html">erdos.renyi.game</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">.15</span>, directed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="va">g</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/igraph/man/erdos.renyi.game.html" class="external-link">erdos.renyi.game</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">.15</span>, directed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span><span class="va">g</span>, directed <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
 <p><img src="igplot_files/figure-html/unnamed-chunk-3-1.png" width="432" style="display: block; margin: auto;"></p>
 <p>The <code>igplot</code> function admits multiple options to change the appearance of the graph. For example, can use different colors for the nodes and edges using the <code>v_fill</code> and <code>e_col</code> option, respectively, and change the background of the plot with the <code>bg</code> option:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">clust</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/igraph/man/communities.html">membership</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/cluster_infomap.html">cluster_infomap</a></span><span class="op">(</span><span class="va">karate</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
-<span class="va">vcols</span> <span class="op">=</span> <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">inferno</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">clust</span><span class="op">)</span><span class="op">)</span>, begin <span class="op">=</span> <span class="fl">.2</span>, end <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">clust</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/igraph/man/communities.html" class="external-link">membership</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/cluster_infomap.html" class="external-link">cluster_infomap</a></span><span class="op">(</span><span class="va">karate</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<span class="va">vcols</span> <span class="op">=</span> <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">inferno</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">clust</span><span class="op">)</span><span class="op">)</span>, begin <span class="op">=</span> <span class="fl">.2</span>, end <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span>
 <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span>
     <span class="va">karate</span>, 
     layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, 
     bg_col <span class="op">=</span> <span class="st">"black"</span>, 
-    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         v_fill <span class="op">=</span> <span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span>, 
         v_cex <span class="op">=</span> <span class="fl">.8</span>,
         e_col <span class="op">=</span> <span class="st">"white"</span>
@@ -118,31 +114,31 @@
 <p><img src="igplot_files/figure-html/unnamed-chunk-4-1.png" width="432" style="display: block; margin: auto;"></p>
 <p>The function doesn’t include options for the transparency of the colors. But we can always use the <code>scales</code> package for these purposes:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
 <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span>
     <span class="va">karate</span>, 
     layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, 
     bg_col <span class="op">=</span> <span class="st">"black"</span>, 
-    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-        v_fill <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html">alpha</a></span><span class="op">(</span><span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span>, <span class="fl">.3</span><span class="op">)</span>, 
+    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+        v_fill <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span>, <span class="fl">.3</span><span class="op">)</span>, 
         v_cex <span class="op">=</span> <span class="fl">.8</span>,
         e_col <span class="op">=</span> <span class="st">"white"</span>
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p><img src="igplot_files/figure-html/unnamed-chunk-5-1.png" width="432" style="display: block; margin: auto;"></p>
-<p>Usually, will export the plot into a <code>.pdf</code> file. In the <code>igplot</code> function, you can do this by specifying the path to the output file using the <code>outfile</code> option together with <code>width</code> and <code>height</code> to specify the dimensions of the plot (in inches). These options are feeded into the <code><a href="https://rdrr.io/r/grDevices/pdf.html">grDevices::pdf</a></code> function.</p>
+<p>Usually, will export the plot into a <code>.pdf</code> file. In the <code>igplot</code> function, you can do this by specifying the path to the output file using the <code>outfile</code> option together with <code>width</code> and <code>height</code> to specify the dimensions of the plot (in inches). These options are feeded into the <code><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">grDevices::pdf</a></code> function.</p>
 </div>
-<div id="saving-data-for-further-use" class="section level2">
-<h2 class="hasAnchor">
-<a href="#saving-data-for-further-use" class="anchor"></a>Saving data for further use</h2>
+<div class="section level2">
+<h2 id="saving-data-for-further-use">Saving data for further use<a class="anchor" aria-label="anchor" href="#saving-data-for-further-use"></a>
+</h2>
 <p>Often, we want to have a deeper look into a subset of the data. In this case, you can specify the <code>return_data</code> option:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
 <span class="va">dat</span> <span class="op">=</span> <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span>
     <span class="va">karate</span>, 
     layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, 
     bg_col <span class="op">=</span> <span class="st">"black"</span>, 
-    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         v_fill <span class="op">=</span> <span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span>, 
         v_cex <span class="op">=</span> <span class="fl">.8</span>,
         e_col <span class="op">=</span> <span class="st">"white"</span>
@@ -153,11 +149,11 @@
 <p>where the <code>plot = FALSE</code> option means that we don’t want to see the plot. When <code>return_data</code> is <code>TRUE</code> the function returns an object of class <code>igplotdat</code>, which is simply a list with two elements: a <code>data.table</code> for the vertices and a <code>data.table</code> for the edges:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># check class of the returned data</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
 <span class="co">#&gt; [1] "igplotdat"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">vertices</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">vertices</span><span class="op">)</span>
 <span class="co">#&gt; [1] "data.table" "data.frame"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">edges</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">edges</span><span class="op">)</span>
 <span class="co">#&gt; [1] "data.table" "data.frame"</span></code></pre></div>
 <p>To get the first couple of rows of each of these <code>data.table</code>s, you can just print the object:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -183,9 +179,9 @@
 <span class="co">#&gt; `iplotdat` object with layout information</span></code></pre></div>
 <p>The <code>dim{i}</code> and <code>dim{i}_{j}</code> columns contain the coordinates of the vertices and edges respectively.</p>
 </div>
-<div id="subsetting-graphs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#subsetting-graphs" class="anchor"></a>Subsetting graphs</h2>
+<div class="section level2">
+<h2 id="subsetting-graphs">Subsetting graphs<a class="anchor" aria-label="anchor" href="#subsetting-graphs"></a>
+</h2>
 <p>The <code>igplot</code> package provides also a couple of useful functions. For example, if you want to plot a subset of the vertices separately, you can use the <code>subset_plot_df</code> function on the <code>dat</code> object. You need to specify the variable name you want to subset on as well as it’s value(s).</p>
 <p>Currently, subsetting is only supported for</p>
 <ol style="list-style-type: decimal">
@@ -209,32 +205,32 @@
 <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span><span class="va">sub_dat2</span>, bg_col <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
 <p><img src="igplot_files/figure-html/unnamed-chunk-12-1.png" width="432" style="display: block; margin: auto;"></p>
 </div>
-<div id="aligning-two-graphs-on-the-same-vertex-set" class="section level2">
-<h2 class="hasAnchor">
-<a href="#aligning-two-graphs-on-the-same-vertex-set" class="anchor"></a>Aligning two graphs on the same vertex set</h2>
+<div class="section level2">
+<h2 id="aligning-two-graphs-on-the-same-vertex-set">Aligning two graphs on the same vertex set<a class="anchor" aria-label="anchor" href="#aligning-two-graphs-on-the-same-vertex-set"></a>
+</h2>
 <p>When plotting networks over time, we often face the problem that position of nodes are arbitrarily rotated even when the underlying graph remains quite similar. In these situations, we can use a procrustes transform to realign the graphs.</p>
 <p>To demonstrate how the function works, we first create two graphs that are only slightly different but give different plotting results (even with the same random seed).</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># add two edges</span>
-<span class="va">karate_2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/igraph/man/add_edges.html">add_edges</a></span><span class="op">(</span>
-    <span class="va">karate</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mr Hi"</span>, <span class="st">"Actor 17"</span>, <span class="st">"Actor 13"</span>, <span class="st">"Actor 17"</span><span class="op">)</span>
+<span class="va">karate_2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/igraph/man/add_edges.html" class="external-link">add_edges</a></span><span class="op">(</span>
+    <span class="va">karate</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Mr Hi"</span>, <span class="st">"Actor 17"</span>, <span class="st">"Actor 13"</span>, <span class="st">"Actor 17"</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
 <span class="va">dat_org</span> <span class="op">=</span> <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span>
     <span class="va">karate</span>, 
     layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, 
-    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>v_fill <span class="op">=</span> <span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span><span class="op">)</span>,
+    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>v_fill <span class="op">=</span> <span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span><span class="op">)</span>,
     bg_col <span class="op">=</span> <span class="st">"black"</span>,
     return_data <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
 <p><img src="igplot_files/figure-html/unnamed-chunk-13-1.png" width="432" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
 <span class="va">dat_new</span> <span class="op">=</span> <span class="fu"><a href="../reference/igplot.html">igplot</a></span><span class="op">(</span>
     <span class="va">karate_2</span>, 
     layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, 
-    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>v_fill <span class="op">=</span> <span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span><span class="op">)</span>,
+    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>v_fill <span class="op">=</span> <span class="va">vcols</span><span class="op">[</span><span class="va">clust</span><span class="op">]</span><span class="op">)</span>,
     bg_col <span class="op">=</span> <span class="st">"black"</span>,
     return_data <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
@@ -245,7 +241,7 @@
 <span class="va">dat_new_procrustes</span> <span class="op">=</span> <span class="fu"><a href="../reference/procrustes.html">procrustes</a></span><span class="op">(</span><span class="va">dat_new</span>, <span class="va">dat_org</span><span class="op">)</span>
 
 <span class="co"># check class</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dat_new_procrustes</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">dat_new_procrustes</span><span class="op">)</span>
 <span class="co">#&gt; [1] "igplotdat"</span></code></pre></div>
 <p>The <code>procrustes</code> function returns an <code>igplotdat</code> object when the first argument is an <code>igplotdat</code> object. Otherwise, it will return a <code>matrix</code> with two columns that correspond to the first and second dimension of the transformed layout. Since the output is a <code>igplotdat</code> object, we can plot it immediately with the <code>igplot</code> function.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -267,11 +263,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Barum Park.</p>
+  <p></p>
+<p>Developed by Barum Park.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -279,6 +277,8 @@
 
   
 
+
+  
 
   </body>
 </html>

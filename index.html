@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">igplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/igplot.html">Get started</a>
 </li>
@@ -52,7 +48,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/baruuum/igplot/">
+  <a href="https://github.com/baruuum/igplot/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -69,38 +65,38 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="igplot" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#igplot" class="anchor"></a>igplot</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="igplot">igplot<a class="anchor" aria-label="anchor" href="#igplot"></a>
+</h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>The <code>igplot</code> package offers a simplified version of the <code>plot.igraph</code> that creates network plots from <code>igraph</code> objects. The main function provided by the package is, unsurprisingly, <code><a href="reference/igplot.html">igplot::igplot</a></code> which is a wrapper around the <code><a href="https://rdrr.io/r/base/plot.html">base::plot</a></code> function.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p>The <code>igplot</code> package offers a simplified version of the <code>plot.igraph</code> that creates network plots from <code>igraph</code> objects. The main function provided by the package is, unsurprisingly, <code><a href="reference/igplot.html">igplot::igplot</a></code> which is a wrapper around the <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">base::plot</a></code> function.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install <code>igplot</code> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"baruuum/igplot"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="basic-usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-usage" class="anchor"></a>Basic Usage</h2>
-<p>The package is designed to plot <code>igraph</code> objects faster than the <code><a href="https://rdrr.io/pkg/igraph/man/plot.igraph.html">igraph::plot.igraph</a></code> function. This means that less options are available. However, for moderate to large graphs, the <code>igplot</code> function should be faster than the <code>plot.igraph</code> function.</p>
+<div class="section level2">
+<h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h2>
+<p>The package is designed to plot <code>igraph</code> objects faster than the <code><a href="https://rdrr.io/pkg/igraph/man/plot.igraph.html" class="external-link">igraph::plot.igraph</a></code> function. This means that less options are available. However, for moderate to large graphs, the <code>igplot</code> function should be faster than the <code>plot.igraph</code> function.</p>
 <p>The basic usage of the package is described below:</p>
 <p>Instead of using the <code>plot</code> method for <code>igraph</code> objects,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/baruuum/igplot">igplot</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/baruuum/igplot" class="external-link">igplot</a></span><span class="op">)</span>
 
 <span class="co"># make graph</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">g</span> <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/erdos.renyi.game.html">erdos.renyi.game</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">.35</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="va">g</span> <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/erdos.renyi.game.html" class="external-link">erdos.renyi.game</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">.35</span><span class="op">)</span>
 
 <span class="co"># make plot with igraph package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>
     <span class="va">g</span>, 
-    layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/igraph/man/layout_with_fr.html">layout_with_fr</a></span>, 
+    layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/igraph/man/layout_with_fr.html" class="external-link">layout_with_fr</a></span>, 
     vertex.color <span class="op">=</span> <span class="st">"blue"</span>, 
     vertex.label <span class="op">=</span> <span class="cn">NA</span>, 
     vertex.size <span class="op">=</span> <span class="fl">5</span>
@@ -109,11 +105,11 @@
 <p>you can use the <code>igplot</code> function, where plotting options are specified as a <code>list</code> with the <code>plot_opts</code> option.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># make same plot with igplot</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
 <span class="fu"><a href="reference/igplot.html">igplot</a></span><span class="op">(</span>
     <span class="va">g</span>, 
     layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, 
-    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    plot_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         v_cex <span class="op">=</span> <span class="fl">2</span>, 
         e_lwd <span class="op">=</span> <span class="fl">.8</span>
     <span class="op">)</span>
@@ -121,50 +117,50 @@
 <p><img src="reference/figures/README-example2-1.png" width="30%" style="display: block; margin: auto;"></p>
 <p>The available plotting options can be found by typing <code><a href="reference/igplot.html">?igplot::igplot</a></code>.</p>
 </div>
-<div id="speed-comaprison" class="section level2">
-<h2 class="hasAnchor">
-<a href="#speed-comaprison" class="anchor"></a>Speed comaprison</h2>
+<div class="section level2">
+<h2 id="speed-comaprison">Speed comaprison<a class="anchor" aria-label="anchor" href="#speed-comaprison"></a>
+</h2>
 <p>Here’s a short speed comparison between these two functions run on MacOS with a 2.4 GHz 8-Core Intel Core i9 processor:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">compare_plot</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span>
     
-    <span class="va">g</span> <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/erdos.renyi.game.html">erdos.renyi.game</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span><span class="op">)</span>
+    <span class="va">g</span> <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/erdos.renyi.game.html" class="external-link">erdos.renyi.game</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span><span class="op">)</span>
     
-    <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">111</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">111</span><span class="op">)</span>
     <span class="fu">tictoc</span><span class="fu">::</span><span class="fu">tic</span><span class="op">(</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span><span class="op">(</span><span class="st">"tmp.pdf"</span>, width <span class="op">=</span> <span class="fl">5</span>, height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">g</span>, layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/igraph/man/layout_with_fr.html">layout_with_fr</a></span><span class="op">)</span> 
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"tmp.pdf"</span>, width <span class="op">=</span> <span class="fl">5</span>, height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g</span>, layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/igraph/man/layout_with_fr.html" class="external-link">layout_with_fr</a></span><span class="op">)</span> 
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span>
     <span class="va">x</span> <span class="op">=</span> <span class="fu">tictoc</span><span class="fu">::</span><span class="fu">toc</span><span class="op">(</span>quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
     
-    <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">111</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">111</span><span class="op">)</span>
     <span class="fu">tictoc</span><span class="fu">::</span><span class="fu">tic</span><span class="op">(</span><span class="op">)</span>
     <span class="fu"><a href="reference/igplot.html">igplot</a></span><span class="op">(</span><span class="va">g</span>, layout <span class="op">=</span> <span class="st">"layout_with_fr"</span>, outfile <span class="op">=</span> <span class="st">"tmp.pdf"</span>, width <span class="op">=</span> <span class="fl">5</span>, height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
     <span class="va">y</span> <span class="op">=</span> <span class="fu">tictoc</span><span class="fu">::</span><span class="fu">toc</span><span class="op">(</span>quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
     
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>igraph <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">toc</span> <span class="op">-</span> <span class="va">x</span><span class="op">$</span><span class="va">tic</span>, igplot <span class="op">=</span> <span class="va">y</span><span class="op">$</span><span class="va">toc</span> <span class="op">-</span> <span class="va">y</span><span class="op">$</span><span class="va">tic</span><span class="op">)</span><span class="op">)</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>igraph <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">toc</span> <span class="op">-</span> <span class="va">x</span><span class="op">$</span><span class="va">tic</span>, igplot <span class="op">=</span> <span class="va">y</span><span class="op">$</span><span class="va">toc</span> <span class="op">-</span> <span class="va">y</span><span class="op">$</span><span class="va">tic</span><span class="op">)</span><span class="op">)</span>
     
 <span class="op">}</span>
 
 <span class="co"># create plots of different sizes</span>
-<span class="va">gsize</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">20000</span><span class="op">)</span>
-<span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gsize</span>, <span class="va">compare_plot</span><span class="op">)</span>
+<span class="va">gsize</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">20000</span><span class="op">)</span>
+<span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">gsize</span>, <span class="va">compare_plot</span><span class="op">)</span>
 
 <span class="co"># colors</span>
-<span class="va">cols</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html">alpha</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="fl">.6</span><span class="op">)</span>, <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html">alpha</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="fl">.6</span><span class="op">)</span><span class="op">)</span>
+<span class="va">cols</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="fl">.6</span><span class="op">)</span>, <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="fl">.6</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># create graph</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">gsize</span>, type <span class="op">=</span> <span class="st">"n"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">gsize</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">gsize</span><span class="op">)</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span>,
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">gsize</span>, type <span class="op">=</span> <span class="st">"n"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">gsize</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">gsize</span><span class="op">)</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span>,
      xlab <span class="op">=</span> <span class="st">"No. of Vertices"</span>, ylab <span class="op">=</span> <span class="st">"Ellapsed Time (seconds)"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">gsize</span>, <span class="va">res</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">gsize</span>, <span class="va">res</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"plot.igraph"</span>, <span class="st">"igplot"</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="va">cols</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">gsize</span>, <span class="va">res</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">gsize</span>, <span class="va">res</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span>, pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"plot.igraph"</span>, <span class="st">"igplot"</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="va">cols</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
-<div id="other-functionalities" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-functionalities" class="anchor"></a>Other Functionalities</h2>
+<div class="section level2">
+<h2 id="other-functionalities">Other Functionalities<a class="anchor" aria-label="anchor" href="#other-functionalities"></a>
+</h2>
 <p>The <code>igplot</code> package provides also some functions to rotate graphs in order to make them comparable and functions to plot subsets of the vertices. See vignette by typing <code><a href="articles/igplot.html">vignette("igplot")</a></code> into the <code>R</code> console for more examples.</p>
 </div>
 </div>
@@ -172,45 +168,56 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/baruuum/igplot/">https://​github.com/​baruuum/​igplot/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/baruuum/igplot/issues">https://​github.com/​baruuum/​igplot/​issues</a>
-</li>
+<li><a href="https://github.com/baruuum/igplot/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/baruuum/igplot/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing igplot</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Barum Park <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/baruuum/igplot/actions"><img src="https://github.com/baruuum/igplot/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/baruuum/igplot/actions" class="external-link"><img src="https://github.com/baruuum/igplot/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Barum Park.</p>
+  <p></p>
+<p>Developed by Barum Park.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -218,6 +225,8 @@
 
   
 
+
+  
 
   </body>
 </html>

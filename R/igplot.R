@@ -84,7 +84,7 @@ igplot = function(
         # check layout 
         if (!is.null(layout)) {
             
-            if (class(layout) == "character") {
+            if ("character" %in% class(layout)) {
                 
                 layout = utils::getFromNamespace(layout, "igraph")(g)
                 
